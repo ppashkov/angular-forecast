@@ -1,0 +1,12 @@
+
+@import '~@angular/material/theming';
+@include mat-core();
+$local-weather-app-primary: mat-palette($mat-red, 500);
+$local-weather-app-accent: mat-palette($mat-indigo, A400);
+$local-weather-app-warn: mat-palette($mat-red);
+$local-weather-app-theme: mat-light-theme(
+  $local-weather-app-primary,
+  $local-weather-app-accent,
+  $local-weather-app-warn
+);
+@include angular-material-theme($local-weather-app-theme);

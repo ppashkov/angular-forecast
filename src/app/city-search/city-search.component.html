@@ -1,0 +1,22 @@
+<div fxLayout="column" style="margin-bottom: 32px">
+  <form #searchForm>
+    <mat-form-field appearance="outline"
+      [ngClass]="search.value ? 'search-box-partial' : 'search-box-full'">
+      <mat-label>Город иди почтовый индекс</mat-label>
+      <mat-icon matPrefix>search</mat-icon>
+      <input matInput aria-label="City or Zip" [formControl]="search" />
+      <mat-error *ngIf="search.invalid"> Введите больше одного символа для поиска
+      </mat-error>
+    </mat-form-field>
+    <button mat-icon-button *ngIf="search.value" class="clear-button"
+      (click)="searchForm.reset(); search.reset();">
+      <mat-icon>close</mat-icon>
+    </button>
+  </form>
+  <div class="center">
+    <mat-slide-toggle color="accent" [(ngModel)]="useNgRx"
+      (ngModelChange)="doSearch(search.value)" [ngModelOptions]="{standalone: true}">
+      {{useNgRx ? 'Использовать NgRX' : 'Использовать BehaviorSubject'}}
+    </mat-slide-toggle>
+  </div>
+</div>
